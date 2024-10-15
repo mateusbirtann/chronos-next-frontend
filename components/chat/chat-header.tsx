@@ -9,7 +9,7 @@ export function ChatHeader() {
         A aplicação permite ao usuário inserir um CEP e receber informações detalhadas sobre o endereço correspondente.
       </span>
       <span className="text-sm text-left w-full">
-        Para utilizar, basta digitar o CEP no campo abaixo e clicar em "Buscar".
+        Para utilizar, basta digitar o CEP no campo abaixo e clicar em &quot;Buscar&quot;.
       </span>
     </>
   );
