@@ -23,7 +23,7 @@ export function CepForm({ inputMessage, setInputMessage, handleSendMessage }: Ce
           className="flex-grow z-10"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
-          placeholder="Digite o CEP..."
+          placeholder="Digite o CEP que deseja consultar..."
           onKeyPress={handleKeyPress}
           inputMode="numeric"
         />
