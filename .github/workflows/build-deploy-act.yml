@@ -1,0 +1,28 @@
+name: Build & Push to Azure Container Registry
+
+on:
+  push:
+    branches: master
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v2
+        with:
+          login-server: ${{ secrets.ACR_ENDPOINT }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          build-args: |
+            NEXT_PUBLIC_CHRONOS_API_URL=${{ secrets.NEXT_PUBLIC_CHRONOS_API_URL }}
+          tags: ${{ secrets.ACR_ENDPOINT }}/chronos-next-frontend:latest
+          file: Dockerfile

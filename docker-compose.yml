@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_CHRONOS_API_URL: ${NEXT_PUBLIC_CHRONOS_API_URL}
+    volumes:
+      - .:/usr/app
+    command: sh -c "pnpm run build && pnpm start"
